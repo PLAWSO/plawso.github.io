@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Payton Lawson</title>
+    <link href="style.css" rel="stylesheet"/>
+    <link rel="icon" href="logo.png"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <main>
+      <section class="glass">
+        <div class="dash">
+          <div class="spacer"></div>
+          <div class="me">
+            <img src="logo.png" height="100px" width="100px" alt="me" />
+            <h3>Payton Lawson</h3>
+            <p>Jr. Developer</p>
+          </div>
+          <div class="navi">
+            <div class="stripButton">item 0</div>
+            <div class="stripButton">item 1</div>
+            <div class="stripButton">item 2</div>
+            <div class="stripButton">item 3</div>
+          </div>
+          <div class="spacer"></div>
+        </div>
+        <div class="window">
+          <div id="stripTree">
+            <div class="panelAligner">
+              <!-- STRIP 0 -->
+              <div class="buttonZoomAligner">
+                <div class="buttonAligner"></div>
+              </div>
+              <div class="strip">
+                <div class="panel" id="0" name="demo">
+
+
+                  <div id="tileContainer">
+                    <div class="runButton" id="runButton"></div>
+                  </div>
+
+
+
+
+                </div>
+                <div class="panel" id="0" name="info"><p>0.1</p></div>
+                <div class="panel" id="0" name="presentation"><p>0.2</p></div>
+                <div class="panel" id="0"><p>0.3</p></div>
+              </div>
+
+              <!-- STRIP 1 -->
+              <div class="buttonZoomAligner">
+                <div class="buttonAligner"></div>
+              </div>
+              <div class="strip">
+                <div class="panel" id="1"><p>1</p></div>
+              </div>
+
+              <!-- STRIP 2 -->
+              <div class="buttonZoomAligner">
+                <div class="buttonAligner"></div>
+              </div>
+              <div class="strip">
+                <div class="panel" id="2"><p>2</p></div>
+                <div class="panel" id="2"><p>2.1</p></div>
+                <div class="panel" id="2">
+                  <div class="sliderContainer">
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="600" max="1500" value="650" id="V_SPACE_SLIDER">
+                      <div class="display" id="V_SPACE_DISPLAY"></div>
+                      <p>Vertical Panel Spacing</p>
+                    </div>
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="850" max="1800" value="900" id="H_SPACE_SLIDER">
+                      <div class="display" id="H_SPACE_DISPLAY"></div>
+                      <p>Horizontal Panel Spacing</p>
+                    </div>                    
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="100" max="1000" value="500" id="V_TIME_SLIDER">
+                      <div class="display" id="V_TIME_DISPLAY"></div>
+                      <p>Vertical Scroll Time</p>
+                    </div>
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="100" max="1000" value="300" id="H_TIME_SLIDER">
+                      <div class="display" id="H_TIME_DISPLAY"></div>
+                      <p>Horizontal Scroll Time</p>
+                    </div>
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="20" max="240" value="240" id="VA_TIME_SLIDER">
+                      <div class="display" id="VA_TIME_DISPLAY"></div>
+                      <p>Vertical Acceleration Time</p>
+                    </div>
+
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="20" max="140" value="140" id="HA_TIME_SLIDER">
+                      <div class="display" id="HA_TIME_DISPLAY"></div>
+                      <p>Horizontal Acceleration Time</p>
+                    </div>
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="80" max="110" value="100" id="ZOOM_SLIDER">
+                      <div class="display" id="ZOOM_DISPLAY"></div>
+                      <p>Zoom</p>
+                    </div>
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="100" max="1000" value="200" id="ZOOM_TIME_SLIDER">
+                      <div class="display" id="ZOOM_TIME_DISPLAY"></div>
+                      <p>Zoom Time</p>
+                    </div>
+
+                    <div class="sliderGroup">
+                      <input type="range" class="slider" min="1" max="50" value="15" id="ZOOM_OFFSET_SLIDER">
+                      <div class="display" id="ZOOM_OFFSET_DISPLAY"></div>
+                      <p>Zoom Offset</p>
+                    </div>
+
+                    <div class="resetButtonGroup">
+                      <div class="resetButton" id="resetButton"></div>
+                    </div>
+
+                  </div>
+                
+                </div>
+                <div class="panel" id="2"><p>2.3</p></div>
+              </div>
+
+              <!-- STRIP 3 -->
+              <div class="buttonZoomAligner">
+                <div class="buttonAligner"></div>
+              </div>
+              <div class="strip">
+                <div class="panel" id="3"><p>3</p></div>
+                <div class="panel" id="3"><p>3.1</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+  </body>
+
+
+  <script src="initialization.js"></script>
+  <script src="global_variables.js"></script>
+  <script src="transitions.js"></script>
+  <script src="editor.js"></script>
+  <script src="algorithms.js"></script>
+
+</html>
