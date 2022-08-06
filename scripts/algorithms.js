@@ -213,7 +213,7 @@ function ArrangeGrid()
 function GenerateSnake()
 {
   var snake = document.createElement("div");
-  snake.style.backgroundImage = "url(snek.png)";
+  snake.style.backgroundImage = "url(./icons/snek.png)";
   snake.style.backgroundRepeat    = "no-repeat";
   snake.style.backgroundSize  = "contain";
   snake.style.width = "calc(100% - 10px)";
@@ -232,7 +232,7 @@ function GenerateSnake()
 function GenerateApple()
 {
   var apple = document.createElement("div");
-  apple.style.backgroundImage = "url(download.jpg)";
+  apple.style.backgroundImage = "url(./icons/download.jpg)";
   apple.style.backgroundRepeat    = "no-repeat";
   apple.style.backgroundSize  = "contain";
   apple.style.width = "calc(100% - 10px)";
