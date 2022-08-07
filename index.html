@@ -4,7 +4,9 @@
 
   <head>
     <title>Payton Lawson</title>
-    <link href="style.css" rel="stylesheet"/>
+    <link href="./styles/style.css" rel="stylesheet"/>
+    <link href="./styles/bubble.css" rel="stylesheet">
+    <link href="./styles/input.css" rel="stylesheet">
     <link rel="icon" href="./icons/logo.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -14,26 +16,26 @@
     <main>
       <section class="glass">
         <div class="dash">
+
           <div class="spacer"></div>
+
           <div class="me">
             <img src="./icons/logo.png" height="100px" width="100px" alt="me" />
             <h3>Payton Lawson</h3>
             <p>Jr. Developer</p>
           </div>
-          <div class="navi">
-            <div class="stripButton">item 0</div>
-            <div class="stripButton">item 1</div>
-            <div class="stripButton">item 2</div>
-            <div class="stripButton">item 3</div>
-          </div>
+
+          <div class="navi" id="navi"></div>
+
           <div class="spacer"></div>
+        
         </div>
         <div class="window">
-          <div id="stripTree">
+          <div class="stripTree" id="stripTree">
             <div class="panelAligner" id="panelAligner">
               <!-- STRIP 0 -->
 
-              <div class="strip" name="item-0">
+              <div class="strip" name="wowsers">
 
                 <div class="panel" id="0">
                   <div class="sliderContainer">
@@ -104,7 +106,7 @@
               </div>
 
               <!-- STRIP 1 --> 
-              <div class="strip" name="item-1">
+              <div class="strip" name="item 1">
                 <div class="panel" id="1"><p>1</p></div>
                 <div class="panel" id="1" name="demo">
                   <div id="tileContainer">
@@ -117,14 +119,18 @@
               </div>
 
               <!-- STRIP 2 -->
-              <div class="strip" name="item-2">
+              <div class="strip" name="item 2">
                 <div class="panel" id="2"><p>2</p></div>
               </div>
 
               <!-- STRIP 3 -->
-              <div class="strip" name="item-3">
+              <div class="strip" name="item 3">
                 <div class="panel" id="3"><p>3</p></div>
                 <div class="panel" id="3"><p>3.1</p></div>
+              </div>
+
+              <div class="strip" name="item 4">
+                <div class="panel" id="4"><p>4</p></div>
               </div>
 
             </div>
@@ -138,7 +144,6 @@
 
 
   <script src="./scripts/initialization.js"></script>
-  <script src="./scripts/global_variables.js"></script>
   <script src="./scripts/editor.js"></script>
   <!--<script src="./scripts/algorithms.js"></script>-->
   <script src="./scripts/tree.js"></script>
