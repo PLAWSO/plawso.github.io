@@ -30,12 +30,10 @@
         </div>
         <div class="window">
           <div id="stripTree">
-            <div class="panelAligner">
+            <div class="panelAligner" id="panelAligner">
               <!-- STRIP 0 -->
-              <div class="buttonZoomAligner">
-                <div class="buttonAligner"></div>
-              </div>
-              <div class="strip">
+
+              <div class="strip" name="item-0">
 
                 <div class="panel" id="0">
                   <div class="sliderContainer">
@@ -105,11 +103,8 @@
 
               </div>
 
-              <!-- STRIP 1 -->
-              <div class="buttonZoomAligner">
-                <div class="buttonAligner"></div>
-              </div>
-              <div class="strip">
+              <!-- STRIP 1 --> 
+              <div class="strip" name="item-1">
                 <div class="panel" id="1"><p>1</p></div>
                 <div class="panel" id="1" name="demo">
                   <div id="tileContainer">
@@ -122,21 +117,16 @@
               </div>
 
               <!-- STRIP 2 -->
-              <div class="buttonZoomAligner">
-                <div class="buttonAligner"></div>
-              </div>
-              <div class="strip">
+              <div class="strip" name="item-2">
                 <div class="panel" id="2"><p>2</p></div>
               </div>
 
               <!-- STRIP 3 -->
-              <div class="buttonZoomAligner">
-                <div class="buttonAligner"></div>
-              </div>
-              <div class="strip">
+              <div class="strip" name="item-3">
                 <div class="panel" id="3"><p>3</p></div>
                 <div class="panel" id="3"><p>3.1</p></div>
               </div>
+
             </div>
           </div>
         </div>
@@ -149,8 +139,11 @@
 
   <script src="./scripts/initialization.js"></script>
   <script src="./scripts/global_variables.js"></script>
-  <script src="./scripts/transitions.js"></script>
   <script src="./scripts/editor.js"></script>
-  <script src="./scripts/algorithms.js"></script>
+  <!--<script src="./scripts/algorithms.js"></script>-->
+  <script src="./scripts/tree.js"></script>
+  <script src="./scripts/strip.js"></script>
+  <script src="./scripts/defValues.js"></script>
+
 
 </html>

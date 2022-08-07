@@ -170,16 +170,7 @@ main {
   font-weight: 600;
 }
 
-.buttonGroup {
-  display: flex;
-  width: 800px;
-  height: 550px;
-  justify-content:flex-end;
-  position: absolute;
-  left: 350px;
-  top: 52px;
-  transform: scale(1);
-}
+
 
 .sliderContainer {
   padding: 20px;
@@ -198,12 +189,38 @@ main {
   position: relative;
 }
 
+.panelButtonAligner {
+  position: absolute;
+  width: 800px;
+  height: 550px;
+  background-color: red;
+}
+
+.panelButtonGroup {
+  position: absolute;
+  display: flex;
+  top: 560px;
+  left: 30px
+}
+
+.panelButton {
+  height: 24px;
+  width: 24px;
+  border-radius: 25%;
+  cursor: pointer;
+  z-index: 10;
+  margin-right: 10px;
+  background-color: black;
+}
+
 .sliderGroup p {
   font-size: medium;
   margin: 0;
   margin-left: 10px;
   margin-top: 5px;
 }
+
+
 
 .slider {
   -webkit-appearance: none;

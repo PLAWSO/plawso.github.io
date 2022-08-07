@@ -1,3 +1,5 @@
+/*
+
 // -- SPACING ---------------------------------------------------------------------------------------------------------
 const V_SPACE_DEFAULT = 650;  // vertical distance between strips, px
 const H_SPACE_DEFAULT = 900;  // horizontal distance between panels, px
@@ -62,3 +64,5 @@ var P_SHADOW_SPREAD;
 var P_SHADOW_SPREAD_OFFSET;
 var P_SHADOW_BLUR;
 var P_SHADOW_COLOR;
+
+*/
