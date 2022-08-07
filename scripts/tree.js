@@ -4,6 +4,10 @@ class Tree {
     this.deTree = tree
     this.strips = strips
 
+    this.setTreeDefaults()
+  }
+
+  setTreeDefaults() {
     let def = new DefValues()
     this.currentStrip = 0
     this.slideInpro = false
