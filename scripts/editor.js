@@ -1,3 +1,5 @@
+/*
+
 var V_SPACE_SLIDER = document.getElementById("V_SPACE_SLIDER");
 var H_SPACE_SLIDER = document.getElementById("H_SPACE_SLIDER");
 var V_TIME_SLIDER = document.getElementById("V_TIME_SLIDER");
@@ -135,3 +137,5 @@ ZOOM_OFFSET_SLIDER.oninput = function () {
 RESET_BUTTON.onclick = function () {
   SetDefaultValues();
 }
+
+*/
