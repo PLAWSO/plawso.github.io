@@ -1,141 +1,157 @@
-/*
+class Editor {
+  constructor(tree, init) {
+    this.tree = tree
+    this.init = init
+    this.V_SPACE_SLIDER = document.getElementById("V_SPACE_SLIDER");
+    this.H_SPACE_SLIDER = document.getElementById("H_SPACE_SLIDER");
+    this.V_TIME_SLIDER = document.getElementById("V_TIME_SLIDER");
+    this.VA_TIME_SLIDER = document.getElementById("VA_TIME_SLIDER");
+    this.H_TIME_SLIDER = document.getElementById("H_TIME_SLIDER");
+    this.HA_TIME_SLIDER = document.getElementById("HA_TIME_SLIDER");
+    this.ZOOM_SLIDER = document.getElementById("ZOOM_SLIDER");
+    this.ZOOM_TIME_SLIDER = document.getElementById("ZOOM_TIME_SLIDER");
+    this.ZOOM_OFFSET_SLIDER = document.getElementById("ZOOM_OFFSET_SLIDER");
+    
+    this.RESET_BUTTON = document.getElementById("resetButton");
+    
+    this.V_SPACE_DISPLAY = document.getElementById("V_SPACE_DISPLAY");
+    this.H_SPACE_DISPLAY = document.getElementById("H_SPACE_DISPLAY");
+    this.V_TIME_DISPLAY = document.getElementById("V_TIME_DISPLAY");
+    this.VA_TIME_DISPLAY = document.getElementById("VA_TIME_DISPLAY");
+    this.H_TIME_DISPLAY = document.getElementById("H_TIME_DISPLAY");
+    this.HA_TIME_DISPLAY = document.getElementById("HA_TIME_DISPLAY");
+    this.ZOOM_DISPLAY = document.getElementById("ZOOM_DISPLAY");
+    this.ZOOM_TIME_DISPLAY = document.getElementById("ZOOM_TIME_DISPLAY");
+    this.ZOOM_OFFSET_DISPLAY = document.getElementById("ZOOM_OFFSET_DISPLAY");
+    
 
-var V_SPACE_SLIDER = document.getElementById("V_SPACE_SLIDER");
-var H_SPACE_SLIDER = document.getElementById("H_SPACE_SLIDER");
-var V_TIME_SLIDER = document.getElementById("V_TIME_SLIDER");
-var VA_TIME_SLIDER = document.getElementById("VA_TIME_SLIDER");
-var H_TIME_SLIDER = document.getElementById("H_TIME_SLIDER");
-var HA_TIME_SLIDER = document.getElementById("HA_TIME_SLIDER");
-var ZOOM_SLIDER = document.getElementById("ZOOM_SLIDER");
-var ZOOM_TIME_SLIDER = document.getElementById("ZOOM_TIME_SLIDER");
-var ZOOM_OFFSET_SLIDER = document.getElementById("ZOOM_OFFSET_SLIDER");
-
-var V_SPACE_DISPLAY = document.getElementById("V_SPACE_DISPLAY");
-var H_SPACE_DISPLAY = document.getElementById("H_SPACE_DISPLAY");
-var V_TIME_DISPLAY = document.getElementById("V_TIME_DISPLAY");
-var VA_TIME_DISPLAY = document.getElementById("VA_TIME_DISPLAY");
-var H_TIME_DISPLAY = document.getElementById("H_TIME_DISPLAY");
-var HA_TIME_DISPLAY = document.getElementById("HA_TIME_DISPLAY");
-var ZOOM_DISPLAY = document.getElementById("ZOOM_DISPLAY");
-var ZOOM_TIME_DISPLAY = document.getElementById("ZOOM_TIME_DISPLAY");
-var ZOOM_OFFSET_DISPLAY = document.getElementById("ZOOM_OFFSET_DISPLAY");
-
-var RESET_BUTTON = document.getElementById("resetButton");
-
-V_SPACE_DISPLAY.innerHTML = V_SPACE_DEFAULT;
-H_SPACE_DISPLAY.innerHTML = H_SPACE_DEFAULT;
-V_TIME_DISPLAY.innerHTML = V_TIME_DEFAULT;
-VA_TIME_DISPLAY.innerHTML = VA_TIME_DEFAULT;
-H_TIME_DISPLAY.innerHTML = H_TIME_DEFAULT;
-HA_TIME_DISPLAY.innerHTML = HA_TIME_DEFAULT;
-ZOOM_DISPLAY.innerHTML = ZOOM_DEFAULT;
-ZOOM_TIME_DISPLAY.innerHTML = ZOOM_TIME_DEFAULT;
-ZOOM_OFFSET_DISPLAY = ZOOM_OFFSET_DEFAULT;
-
-V_SPACE_SLIDER.oninput = function () {
-  V_SPACE = Math.round(this.value / 10) * 10;
-  V_SPACE_DISPLAY.innerHTML = V_SPACE;
-
-  for (var z = 1; z < STRIPS.length; z++)
-  {
-    STRIPS[z].style.top = `${z * V_SPACE}px`;
-    PANEL_BUTTON_ZOOM_ALIGNERS[z].style.top = `${z * V_SPACE}px`;
+    this.setSliderDefaults()
+    this.setSliderFunctions(this.tree, this)
+    this.setResetButtonFunction(this.tree, this)
   }
 
-  TREE.style.top = `${-CURRENT_STRIP * V_SPACE}px`;
-}
+  setSliderDefaults() {
+    let def = new DefValues()
 
-H_SPACE_SLIDER.oninput = function () {
-  H_SPACE = Math.round(this.value / 10) * 10;
-  H_SPACE_DISPLAY.innerHTML = H_SPACE;
+    this.V_SPACE_DISPLAY.innerHTML = def.V_SPACE
+    this.H_SPACE_DISPLAY.innerHTML = def.H_SPACE
+    this.V_TIME_DISPLAY.innerHTML = def.V_TIME
+    this.VA_TIME_DISPLAY.innerHTML = def.VA_TIME
+    this.H_TIME_DISPLAY.innerHTML = def.H_TIME
+    this.HA_TIME_DISPLAY.innerHTML = def.HA_TIME
+    this.ZOOM_DISPLAY.innerHTML = def.ZOOM
+    this.ZOOM_TIME_DISPLAY.innerHTML = def.ZOOM_TIME
+    this.ZOOM_OFFSET_DISPLAY.innerHTML = def.ZOOM_OFFSET
 
-  for (var z = 0; z < STRIPS.length; z++)
-  {
-    for (var x = 0; x < PANELS[z].length; x++)
-    {
-      PANELS[z][x].style.left = `${x * H_SPACE}px`;
-      PANEL_BUTTON_ZOOM_ALIGNERS[z].style.top = `${z * V_SPACE}px`;
+    this.VA_TIME_SLIDER.max = def.vaTimeSliderMax
+    this.HA_TIME_SLIDER.max = def.haTimeSliderMax
+  }
+
+
+  setSliderFunctions(tree, self) {
+    this.V_SPACE_SLIDER.oninput = function () {
+      tree.vSpace = Math.round(this.value / 10) * 10
+      self.V_SPACE_DISPLAY.innerHTML = tree.vSpace
+    
+      for (let z = 1; z < tree.strips.length; z++)
+      {
+        tree.strips[z].deStrip.style.top = `${z * tree.vSpace}px`
+        tree.strips[z].dePanelButtonAligner.style.top = `${z * tree.vSpace}px`
+      }
+    
+      tree.deTree.style.top = `${-tree.currentStrip * tree.vSpace}px`
+    }
+    
+    this.H_SPACE_SLIDER.oninput = function () {
+      for (let z = 0; z < tree.strips.length; z++)
+        tree.strips[z].hSpace = Math.round(this.value / 10) * 10
+
+      self.H_SPACE_DISPLAY.innerHTML = tree.strips[0].hSpace
+    
+      for (let z = 0; z < tree.strips.length; z++)
+        for (let x = 0; x < tree.strips[z].dePanels.length; x++)
+          tree.strips[z].dePanels[x].style.left = `${x * tree.strips[z].hSpace}px`;
+
+      tree.strips[tree.currentStrip].deStrip.style.left = `${-tree.strips[tree.currentStrip].currentPanel * tree.hSpace}px`;
+    }
+    
+    this.V_TIME_SLIDER.oninput = function () {
+      self.VA_TIME_SLIDER.max = Math.round(this.value / 20) * 10 - 10;
+      tree.vaTime = Math.round(self.VA_TIME_SLIDER.value / 10) * 10 - 10;
+      tree.vTime = Math.round(this.value / 10) * 10;
+      self.V_TIME_DISPLAY.innerHTML = tree.vTime;
+      self.VA_TIME_DISPLAY.innerHTML = tree.vaTime;
+    }
+    
+    this.VA_TIME_SLIDER.oninput = function () {
+      tree.vaTime = Math.round(this.value / 10) * 10 - 10;
+      self.VA_TIME_DISPLAY.innerHTML = tree.vaTime;
+    }
+    
+    this.H_TIME_SLIDER.oninput = function () {
+      self.HA_TIME_SLIDER.max = Math.round(this.value / 20) * 10 - 10;
+      for (let z = 0; z < tree.strips.length; z++) {
+        tree.strips[z].haTime = Math.round(self.HA_TIME_SLIDER.value / 10) * 10 - 10;
+        tree.strips[z].hTime = Math.round(this.value / 10) * 10;
+      }
+      self.H_TIME_DISPLAY.innerHTML = tree.strips[0].hTime
+      self.HA_TIME_DISPLAY.innerHTML = tree.strips[0].haTime
+    }
+    
+    this.HA_TIME_SLIDER.oninput = function () {
+      for (let z = 0; z < tree.strips.length; z++)
+        tree.strips[z].haTime = Math.round(this.value / 10) * 10 - 10;
+      self.HA_TIME_DISPLAY.innerHTML = tree.strips[0].haTime;
+    }
+    
+    this.ZOOM_SLIDER.oninput = function () {
+      tree.zoom = this.value / 100;
+      ZOOM_DISPLAY.innerHTML = tree.zoom;
+    
+      for (let z = 0; z < tree.strips.length; z++) {
+        if (z == tree.currentStrip)
+          tree.strips[z].dePanelButtonAligner.style.transform = `scale(${tree.zoom})`
+        else
+          tree.strips[z].dePanelButtonAligner.style.transform = `scale(${tree.zoom - tree.zoomOffset})`
+
+          for (let x = 0; x < tree.strips[z].dePanels.length; x++) {
+          if (z == tree.currentStrip)
+            tree.strips[z].dePanels[x].style.transform = `scale(${tree.zoom})`
+          else
+            tree.strips[z].dePanels[x].style.transform = `scale(${tree.zoom - tree.zoomOffset})`
+        }
+      }
+    }
+    
+    this.ZOOM_TIME_SLIDER.oninput = function () {
+      tree.zoomTime = Math.round(this.value / 10) * 10;
+      ZOOM_TIME_DISPLAY.innerHTML = tree.zoomTime;
+    }
+    
+    this.ZOOM_OFFSET_SLIDER.oninput = function () {
+      tree.zoomOffset = this.value / 100;
+      ZOOM_OFFSET_DISPLAY.innerHTML = tree.zoomOffset;
+    
+      for (let z = 0; z < tree.strips.length; z++) {
+        if (z != tree.currentStrip)
+          tree.strips[z].dePanelButtonAligner.style.transform = `scale(${tree.zoom - tree.zoomOffset})`;
+    
+        for (let x = 0; x < tree.strips[z].dePanels.length; x++)
+        {
+          if (z != tree.currentStrip)
+            tree.strips[z].dePanels[x].style.transform = `scale(${tree.zoom - tree.zoomOffset})`;
+        }
+      }
     }
   }
 
-  STRIPS[CURRENT_STRIP].style.left = `${-CURRENT_PANEL[CURRENT_STRIP] * H_SPACE}px`;
-}
-
-V_TIME_SLIDER.oninput = function () {
-  VA_TIME_SLIDER.max = Math.round(this.value / 20) * 10 - 10;
-  VA_TIME = Math.round(VA_TIME_SLIDER.value / 10) * 10 - 10;
-  V_TIME = Math.round(this.value / 10) * 10;
-  V_TIME_DISPLAY.innerHTML = V_TIME;
-  VA_TIME_DISPLAY.innerHTML = VA_TIME;
-}
-
-VA_TIME_SLIDER.oninput = function () {
-  VA_TIME = Math.round(this.value / 10) * 10 - 10;
-  VA_TIME_DISPLAY.innerHTML = VA_TIME;
-}
-
-H_TIME_SLIDER.oninput = function () {
-  HA_TIME_SLIDER.max = Math.round(this.value / 20) * 10 - 10;
-  HA_TIME = Math.round(HA_TIME_SLIDER.value / 10) * 10 - 10;
-  H_TIME = Math.round(this.value / 10) * 10;
-  H_TIME_DISPLAY.innerHTML = H_TIME;
-  HA_TIME_DISPLAY.innerHTML = HA_TIME;
-}
-
-HA_TIME_SLIDER.oninput = function () {
-  HA_TIME = Math.round(this.value / 10) * 10 - 10;
-  HA_TIME_DISPLAY.innerHTML = HA_TIME;
-}
-
-ZOOM_SLIDER.oninput = function () {
-  ZOOM = this.value / 100;
-  ZOOM_DISPLAY.innerHTML = ZOOM;
-
-  for (var z = 0; z < PANELS.length; z++)
-  {
-    if (z == CURRENT_STRIP)
-    {
-      PANEL_BUTTON_ZOOM_ALIGNERS[z].style.transform = `scale(${ZOOM})`;
-      console.log(CURRENT_STRIP);
-    }
-    else
-      PANEL_BUTTON_ZOOM_ALIGNERS[z].style.transform = `scale(${ZOOM - ZOOM_OFFSET})`;
-
-
-    for (var x = 0; x < PANELS[z].length; x++)
-    {
-      if (z == CURRENT_STRIP)
-        PANELS[z][x].style.transform = `scale(${ZOOM})`;
-      else
-        PANELS[z][x].style.transform = `scale(${ZOOM - ZOOM_OFFSET})`;
+  setResetButtonFunction(tree, self) {
+    this.RESET_BUTTON.onclick = function () {
+      self.setSliderDefaults()
+      tree.setTreeDefaults()
+      init.arrangePanels()
+      for (let z = 0; z < tree.strips.length; z++)
+        tree.strips[z].setStripDefaults()
     }
   }
 }
-
-ZOOM_TIME_SLIDER.oninput = function () {
-  ZOOM_TIME = Math.round(this.value / 10) * 10;
-  ZOOM_TIME_DISPLAY.innerHTML = ZOOM_TIME;
-}
-
-ZOOM_OFFSET_SLIDER.oninput = function () {
-  ZOOM_OFFSET = this.value / 100;
-  ZOOM_OFFSET_DISPLAY.innerHTML = ZOOM_OFFSET;
-
-  for (var z = 0; z < PANELS.length; z++)
-  {
-    if (z != CURRENT_STRIP)
-      PANEL_BUTTON_ZOOM_ALIGNERS[z].style.transform = `scale(${ZOOM - ZOOM_OFFSET})`;
-
-    for (var x = 0; x < PANELS[z].length; x++)
-    {
-      if (z != CURRENT_STRIP)
-        PANELS[z][x].style.transform = `scale(${ZOOM - ZOOM_OFFSET})`;
-    }
-  }
-}
-
-RESET_BUTTON.onclick = function () {
-  SetDefaultValues();
-}
-
-*/

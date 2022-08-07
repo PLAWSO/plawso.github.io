@@ -13,5 +13,9 @@ class DefValues {
     this.H_TIME = 300;     // time spent sliding between panels, ms
     this.HA_TIME = 140;    // time spent accelerating during panel slide, ms, < 0.5 * PANEL_SLIDE_TIME
     this.ZT_OVERLAP = 100; // time zoom and slide are allowed to overlap, ms
+
+    this.vaTimeSliderMax = 240
+    this.haTimeSliderMax = 140
+
   }
 }

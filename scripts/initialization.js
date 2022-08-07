@@ -17,6 +17,7 @@ class Initialization {
     this.stripButtons = document.getElementsByClassName("stripButton");
     
     this.tree = new Tree(document.getElementById("stripTree"), this.strips)
+    this.editor = new Editor(this.tree, this)
 
     this.createStripButtons(this.strips, this.deNavi)
     this.setStripButtonFunction(this.tree, this.stripButtons)

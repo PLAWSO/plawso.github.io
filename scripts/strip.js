@@ -5,6 +5,10 @@ class Strip {
     this.dePanelButtonAligner = panelButtonAligner
     this.dePanelButtons = panelButtons
 
+    this.setStripDefaults()
+  }
+
+  setStripDefaults() {
     let def = new DefValues()
     this.currentPanel = 0
     this.slideInpro = false
@@ -48,8 +52,7 @@ class Strip {
     let self = this
     let currentVelocity = 0;
     let maxVelocityTimer = 0;
-    let slider = setInterval(function()
-    {
+    let slider = setInterval(function() {
       if (currentVelocity < maxVelocity && maxVelocityTimer < timeAtMax)
         currentVelocity += acceleration;
       else if (maxVelocityTimer < timeAtMax)
