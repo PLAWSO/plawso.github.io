@@ -5,6 +5,7 @@ onload = function() {
 class Initialization {
   constructor() {
     this.dePanelAligner = document.getElementById("panelAligner")
+    this.deNavi = document.getElementById("navi")
 
     let rawPanels = document.getElementsByClassName("panel")
     let sortedPanels = this.sortPanels(rawPanels)
@@ -17,6 +18,7 @@ class Initialization {
     
     this.tree = new Tree(document.getElementById("stripTree"), this.strips)
 
+    this.createStripButtons(this.strips, this.deNavi)
     this.setStripButtonFunction(this.tree, this.stripButtons)
     this.setPanelButtonFunction(this.strips)
   }
@@ -73,11 +75,11 @@ class Initialization {
     let defValues = new DefValues() 
   
     for (let z = 0; z < this.strips.length; z++) {
-      this.strips[z].deStrip.style.top = `${z * defValues.V_SPACE}px`; // move strips to start positions
+      this.strips[z].deStrip.style.top = `${z * defValues.V_SPACE}px`
       this.strips[z].dePanelButtonAligner.style.top = `${z * defValues.V_SPACE}px`
-      for (let x = 0; x < this.strips[z].dePanels.length; x++)  // loop through panels on strip z
+      for (let x = 0; x < this.strips[z].dePanels.length; x++)
       {
-        this.strips[z].dePanels[x].style.left = `${x * defValues.H_SPACE}px`; // move panels to start positions
+        this.strips[z].dePanels[x].style.left = `${x * defValues.H_SPACE}px`
         if (z == 0)
         {
           this.strips[z].dePanelButtonAligner.style.transform = `scale(${defValues.ZOOM})`
@@ -86,10 +88,22 @@ class Initialization {
         else
         {
           this.strips[z].dePanelButtonAligner.style.transform = `scale(${defValues.ZOOM - defValues.ZOOM_OFFSET})`
-          this.strips[z].dePanels[x].style.transform = `scale(${defValues.ZOOM - defValues.ZOOM_OFFSET})`  // zoom out panels after strip 1
+          this.strips[z].dePanels[x].style.transform = `scale(${defValues.ZOOM - defValues.ZOOM_OFFSET})`
         }
       }
     }
+  }
+
+  createStripButtons(strips, navi) {
+    let stripButton, stripButtons = []
+    for (let z = 0; z < strips.length; z++) {
+      stripButton = document.createElement("div")
+      stripButton.innerHTML = strips[z].deStrip.getAttribute("name")
+      stripButton.className = "stripButton"
+      stripButtons.push(stripButton)
+      navi.insertBefore(stripButton, null)
+    }
+    return stripButtons
   }
 
   setStripButtonFunction(tree, stripButtons) {

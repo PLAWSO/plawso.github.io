@@ -1,0 +1,129 @@
+/* STRIP ------------------------------------------- */
+.stripButton {
+  border-radius: 1rem;
+  background: linear-gradient(
+    to right top,
+    #65dfc9,
+    #6cdbeb
+  );
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+/* PANEL ------------------------------------------- */
+.panelButtonAligner {
+  position: absolute;
+  width: 800px;
+  height: 550px;
+  background-color: red;
+}
+
+.panelButtonGroup {
+  position: absolute;
+  display: flex;
+  top: 560px;
+  left: 30px
+}
+
+.panelButton {
+  height: 24px;
+  width: 24px;
+  border-radius: 25%;
+  cursor: pointer;
+  z-index: 10;
+  margin-right: 10px;
+  background-color: black;
+}
+
+/* SLIDERS ------------------------------------------ */
+.sliderContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.sliderGroup {
+  flex-basis: 45%;
+  flex-grow: 1;
+  margin: 10px;
+  height: 80px;
+  position: relative;
+}
+.sliderGroup p {
+  font-size: medium;
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;  
+  outline: none;
+  opacity: 0.7;
+  position: relative;
+
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.6));
+    padding: 0;
+    z-index: 2;
+}
+  
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 50px;
+  border-radius: 10px; 
+  background: black;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+  z-index: 4;
+}
+
+/* RESET -------------------------------------------- */
+.resetButtonGroup {
+  flex-basis: 45%;
+  flex-grow: 1;
+  margin: 10px;
+}
+
+.resetButton {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: blue;
+  right: 100px;
+  cursor: pointer;
+}
+
+.display {
+  position: absolute;
+  right: 15px;
+  top: 6px;
+  font-weight:bolder;
+  font-size: x-large;
+  color: rgba(101, 223, 201, 0.6);
+  user-select: none;
+  z-index:3;
+}
+
+.dragging {
+  opacity: 0.5;
+}
