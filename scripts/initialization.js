@@ -18,6 +18,7 @@ class Initialization {
     
     this.tree = new Tree(document.getElementById("stripTree"), this.strips)
     this.editor = new Editor(this.tree, this)
+    this.grid = new Grid(this.strips[0].dePanels[0], 11, 11)
 
     this.createStripButtons(this.strips, this.deNavi)
     this.setStripButtonFunction(this.tree, this.stripButtons)
@@ -76,20 +77,20 @@ class Initialization {
     let defValues = new DefValues() 
   
     for (let z = 0; z < this.strips.length; z++) {
-      this.strips[z].deStrip.style.top = `${z * defValues.V_SPACE}px`
-      this.strips[z].dePanelButtonAligner.style.top = `${z * defValues.V_SPACE}px`
+      this.strips[z].deStrip.style.top = `${z * defValues.vSpace}px`
+      this.strips[z].dePanelButtonAligner.style.top = `${z * defValues.vSpace}px`
       for (let x = 0; x < this.strips[z].dePanels.length; x++)
       {
-        this.strips[z].dePanels[x].style.left = `${x * defValues.H_SPACE}px`
+        this.strips[z].dePanels[x].style.left = `${x * defValues.hSpace}px`
         if (z == 0)
         {
-          this.strips[z].dePanelButtonAligner.style.transform = `scale(${defValues.ZOOM})`
-          this.strips[z].dePanels[x].style.transform = `scale(${defValues.ZOOM})`
+          this.strips[z].dePanelButtonAligner.style.transform = `scale(${defValues.zoom})`
+          this.strips[z].dePanels[x].style.transform = `scale(${defValues.zoom})`
         }
         else
         {
-          this.strips[z].dePanelButtonAligner.style.transform = `scale(${defValues.ZOOM - defValues.ZOOM_OFFSET})`
-          this.strips[z].dePanels[x].style.transform = `scale(${defValues.ZOOM - defValues.ZOOM_OFFSET})`
+          this.strips[z].dePanelButtonAligner.style.transform = `scale(${defValues.zoom - defValues.zoomOffset})`
+          this.strips[z].dePanels[x].style.transform = `scale(${defValues.zoom - defValues.zoomOffset})`
         }
       }
     }

@@ -7,6 +7,7 @@
     <link href="./styles/style.css" rel="stylesheet"/>
     <link href="./styles/bubble.css" rel="stylesheet">
     <link href="./styles/input.css" rel="stylesheet">
+    <link href="./styles/grid.css" rel="stylesheet">
     <link rel="icon" href="./icons/logo.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -36,7 +37,7 @@
               <!-- STRIP 0 -->
 
               <div class="strip" name="wowsers">
-
+                <div class="panel" id="0"></div>
                 <div class="panel" id="0">
                   <div class="sliderContainer">
 
@@ -87,6 +88,7 @@
                       <div class="display" id="ZOOM_TIME_DISPLAY"></div>
                       <p>Zoom Time (ms)</p>
                     </div>
+
 
                     <div class="sliderGroup">
                       <input type="range" class="slider" min="1" max="50" value="15" id="ZOOM_OFFSET_SLIDER">
@@ -145,7 +147,7 @@
 
   <script src="./scripts/initialization.js"></script>
   <script src="./scripts/editor.js"></script>
-  <!--<script src="./scripts/algorithms.js"></script>-->
+  <script src="./scripts/grid.js"></script>
   <script src="./scripts/tree.js"></script>
   <script src="./scripts/strip.js"></script>
   <script src="./scripts/defValues.js"></script>

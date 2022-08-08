@@ -5,19 +5,19 @@ class Tree {
     this.strips = strips
 
     this.setTreeDefaults()
+    this.currentStrip = 0
+    this.slideInpro = false
   }
 
   setTreeDefaults() {
     let def = new DefValues()
-    this.currentStrip = 0
-    this.slideInpro = false
-    this.zoomTime = def.ZOOM_TIME
-    this.vTime = def.V_TIME
-    this.vaTime = def.VA_TIME
-    this.vSpace = def.V_SPACE
-    this.ztOverlap = def.ZT_OVERLAP
-    this.zoom = def.ZOOM
-    this.zoomOffset = def.ZOOM_OFFSET
+    this.zoomTime = def.zoomTime
+    this.vTime = def.vTime
+    this.vaTime = def.vaTime
+    this.vSpace = def.vSpace
+    this.ztOverlap = def.ztOverlap
+    this.zoom = def.zoom
+    this.zoomOffset = def.zoomOffset
   }
 
   VTransition(strip) // orchestrates strip transition

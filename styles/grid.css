@@ -1,0 +1,41 @@
+.entity {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  flex-shrink: 0;
+  user-select: none;
+  margin: 5px;
+}
+
+.tileContainer {
+  height: 500px;
+  width: 500px;
+  background-color: blue;
+  margin: 25px;
+  display: grid;
+  grid-template-columns: repeat(11, 45px);
+  grid-template-rows: repeat(11, 45px);
+  padding: 4px;
+}
+
+.tile {
+  height: 42px;
+  width: 42px;
+  background: white;
+  border-radius: 10%;
+  cursor: pointer;
+  display: flex;
+  user-select: none;
+}
+
+
+.wall {
+  background: red;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  flex-shrink: 0;
+  user-select: none;
+  margin: 5px;
+  order: 2;
+}
