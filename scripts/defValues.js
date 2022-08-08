@@ -1,21 +1,19 @@
 class DefValues {
   constructor() {
-    this.V_SPACE = 650;  // vertical distance between strips, px
-    this.H_SPACE = 900;  // horizontal distance between panels, px
-    this.PB_SPACE = 35;  // horizontal distance between panel buttons, px
+    this.vSpace = 650  // vertical distance between strips, px
+    this.hSpace = 900  // horizontal distance between panels, px
 
-    this.ZOOM = 1;           // panel size when in view, %
-    this.ZOOM_OFFSET = 0.15; // amount to zoom out of panels, %
-    this.ZOOM_TIME = 200;    // time spent zooming panels, ms
+    this.zoom = 1           // panel size when in view, %
+    this.zoomOffset = 0.15 // amount to zoom out of panels, %
+    this.zoomTime = 200    // time spent zooming panels, ms
 
-    this.V_TIME = 500;     // time spent sliding between strips, ms
-    this.VA_TIME = 240;    // time spent accelerating during strip slide, ms, < 0.5 * STRIP_SLIDE_TIME
-    this.H_TIME = 300;     // time spent sliding between panels, ms
-    this.HA_TIME = 140;    // time spent accelerating during panel slide, ms, < 0.5 * PANEL_SLIDE_TIME
-    this.ZT_OVERLAP = 100; // time zoom and slide are allowed to overlap, ms
+    this.vTime = 500     // time spent sliding between strips, ms
+    this.vaTime = 240    // time spent accelerating during strip slide, ms, < 0.5 * STRIP_SLIDE_TIME
+    this.hTime = 300     // time spent sliding between panels, ms
+    this.haTime = 140   // time spent accelerating during panel slide, ms, < 0.5 * PANEL_SLIDE_TIME
+    this.ztOverlap = 100 // time zoom and slide are allowed to overlap, ms
 
     this.vaTimeSliderMax = 240
     this.haTimeSliderMax = 140
-
   }
 }

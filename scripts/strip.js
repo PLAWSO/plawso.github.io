@@ -6,15 +6,15 @@ class Strip {
     this.dePanelButtons = panelButtons
 
     this.setStripDefaults()
+    this.currentPanel = 0
+    this.slideInpro = false
   }
 
   setStripDefaults() {
     let def = new DefValues()
-    this.currentPanel = 0
-    this.slideInpro = false
-    this.hTime = def.H_TIME
-    this.haTime = def.HA_TIME
-    this.hSpace = def.H_SPACE
+    this.hTime = def.hTime
+    this.haTime = def.haTime
+    this.hSpace = def.hSpace
   }
 
   HTransition(panel) // orchestrates panel transition

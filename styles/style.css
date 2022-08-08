@@ -106,8 +106,8 @@ main {
   z-index: 2;
 }
 .panel {
-  width:800px;
   height: 550px;
+  width: 800px;
   background: linear-gradient(
     to right bottom,
     rgba(101, 223, 201, 0.6),
