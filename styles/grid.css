@@ -19,6 +19,8 @@
   padding: 4px;
 }
 
+
+
 .tile {
   height: 42px;
   width: 42px;
@@ -27,15 +29,27 @@
   cursor: pointer;
   display: flex;
   user-select: none;
+
+  font-size: xx-small;
+  color: white;
 }
 
 
 .wall {
   background: red;
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
-  flex-shrink: 0;
   user-select: none;
-  margin: 5px;
-  order: 2;
+}
+
+/* for testing */
+.neighbor, .visited {
+  background: orange;
+  user-select: none;
+}
+
+.closed {
+  background: black;
+}
+
+.path {
+  background: green;
 }
