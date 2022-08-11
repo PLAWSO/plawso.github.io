@@ -117,18 +117,10 @@ main {
   position: absolute;
   z-index: 2;
   user-select: none;
+  display: flex;
 }
 .panel p {
   margin: 20px;
   font-size: x-large;
   font-weight: 600;
 }
-
-
-
-
-
-
-
-
-

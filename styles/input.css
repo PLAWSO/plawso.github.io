@@ -1,5 +1,5 @@
 /* STRIP ------------------------------------------- */
-.stripButton {
+.stripButton, .algoButton {
   border-radius: 1rem;
   background: linear-gradient(
     to right top,

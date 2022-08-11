@@ -20,28 +20,10 @@ class Grid {
     this.startDrag
 
     let self = this
+    
     window.addEventListener("mouseup", e => {
       self.isDrawing = false;
       self.tileBrush = "";
-    })
-
-    this.deStartButton = document.createElement("button")
-    this.deStartButton.className = "panelButton"
-    this.deHomePanel.insertBefore(this.deStartButton, this.deTileContainer)
-    this.deStartButton.addEventListener("click", e => {
-      self.aStar = new AStar(self.deTiles, self.rows, self.cols)
-    })
-
-    this.deStepButton = document.createElement("button")
-    this.deStepButton.className = "panelButton"
-    this.deHomePanel.insertBefore(this.deStepButton, this.deTileContainer)
-    this.deStepButton.addEventListener("click", e => {
-      this.path = self.aStar.algorithm()
-      if (this.path != []) {
-        this.path.forEach(tile => {
-          tile.deTile.classList.add("path")
-        })
-      }
     })
   }
 

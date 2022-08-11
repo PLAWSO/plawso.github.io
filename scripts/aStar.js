@@ -14,21 +14,27 @@ class AStar {
       this.tiles.push(buffer)
     }
 
-    for (let z = 0; z < cols; z++) {
-      for (let x = 0; x < rows; x++) {
+    
+  }
+  
+  findEntities() {
+    for (let z = 0; z < this.cols; z++) {
+      for (let x = 0; x < this.rows; x++) {
         if (this.tiles[z][x].deTile.childNodes[0]) {
           if (this.tiles[z][x].deTile.childNodes[0].classList.contains("snake"))
-            this.start = this.tiles[z][x]
+          this.start = this.tiles[z][x]
           if (this.tiles[z][x].deTile.childNodes[0].classList.contains("apple"))
-            this.end = this.tiles[z][x]
+          this.end = this.tiles[z][x]
         }
       }
     }
-
+    
     this.heap.push(this.start)
   }
 
-  algorithm() {
+  algoStep() {
+    if (!this.start)
+      this.findEntities()
 /*
     let z = 0
     while (z < 3) {
@@ -45,7 +51,6 @@ class AStar {
       currentTile.deTile.classList.add("closed")
 
       let neighbors = this.neighbors(currentTile)
-      console.log("NEW NEIGHBORS")
 
       neighbors.forEach(neighbor => {
         if (!neighbor.closed) {
@@ -63,28 +68,20 @@ class AStar {
             neighbor.parent = currentTile
             neighbor.g = gScore
             neighbor.h = this.distanceTo(neighbor, this.end)
-            let oldF = neighbor.f
             neighbor.f = neighbor.g + neighbor.h
-            if (neighbor.f > oldF && visited)
-              console.log("that aint right")
             neighbor.deTile.classList.add("visited")
             neighbor.deTile.innerHTML = "g:"+neighbor.g+"\nh:"+neighbor.h+"\nf:"+neighbor.f+"\nx:"+neighbor.x+"\ny:"+neighbor.y
           }
 
-          if (!visited) {
-            // this.addTileToHeap(neighbor)
+          if (!visited)
             this.heap.push(neighbor)
-          }
           this.heap.sort((a, b) => a.f - b.f)
-          /*
-          else {
-            this.reorderTileInHeap(neighbor)
-          }*/
+
           let buf = []
           this.heap.forEach(tile => {
             buf.push(tile.deTile)
           })
-          console.log(buf)
+
         }
       })
     

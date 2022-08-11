@@ -18,7 +18,7 @@ class Initialization {
     
     this.tree = new Tree(document.getElementById("stripTree"), this.strips)
     this.editor = new Editor(this.tree, this)
-    this.grid = new Grid(this.strips[0].dePanels[0], 11, 11)
+    this.pathfinder = new Pathfinder(this.strips[0].dePanels[0], 11, 11)
 
     this.createStripButtons(this.strips, this.deNavi)
     this.setStripButtonFunction(this.tree, this.stripButtons)
@@ -118,4 +118,5 @@ class Initialization {
       for (let x = 0; x < strips[z].dePanels.length; x++)
         strips[z].dePanelButtons[x].onclick = function() {strips[z].HTransition(x)}
   }
+
 }
