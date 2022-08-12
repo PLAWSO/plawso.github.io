@@ -14,14 +14,10 @@ class Initialization {
 
     this.arrangePanels()
 
-    this.stripButtons = document.getElementsByClassName("stripButton");
-    
-    this.tree = new Tree(document.getElementById("stripTree"), this.strips)
+    this.tree = new Tree(document.getElementById("stripTree"), this.strips, this.deNavi)
     this.editor = new Editor(this.tree, this)
     this.pathfinder = new Pathfinder(this.strips[0].dePanels[0], 11, 11)
 
-    this.createStripButtons(this.strips, this.deNavi)
-    this.setStripButtonFunction(this.tree, this.stripButtons)
     this.setPanelButtonFunction(this.strips)
   }
 
@@ -51,8 +47,11 @@ class Initialization {
       dePanelButtonGroup.className = "panelButtonGroup"
       dePanelButtonAligner.insertBefore(dePanelButtonGroup, null)
       
-      let dePanelButtons = this.createPanelButtons(sortedPanels[z].length, dePanelButtonGroup)
-      
+      let dePanelButtons
+      if (sortedPanels[z].length > 1) {
+        dePanelButtons = this.createPanelButtons(sortedPanels[z].length, dePanelButtonGroup)
+        dePanelButtons[0].style.backgroundColor = "#a6a6a6"
+      }
       let strip = new Strip(rawStrips[z], sortedPanels[z], dePanelButtonAligner, dePanelButtons)
       strips.push(strip)
     }
@@ -71,6 +70,13 @@ class Initialization {
     panelButtons = panelButtons;
 
     return panelButtons;
+  }
+
+  setPanelButtonFunction(strips) {
+    for (let z = 0; z < strips.length; z++)
+      for (let x = 0; x < strips[z].dePanels.length; x++)
+        if (strips[z].dePanels.length > 1)
+          strips[z].dePanelButtons[x].onclick = function() {strips[z].HTransition(x)}
   }
 
   arrangePanels() {
@@ -94,29 +100,6 @@ class Initialization {
         }
       }
     }
-  }
-
-  createStripButtons(strips, navi) {
-    let stripButton, stripButtons = []
-    for (let z = 0; z < strips.length; z++) {
-      stripButton = document.createElement("div")
-      stripButton.innerHTML = strips[z].deStrip.getAttribute("name")
-      stripButton.className = "stripButton"
-      stripButtons.push(stripButton)
-      navi.insertBefore(stripButton, null)
-    }
-    return stripButtons
-  }
-
-  setStripButtonFunction(tree, stripButtons) {
-    for (let z = 0; z < stripButtons.length; z++)
-      stripButtons[z].onclick = function() {tree.VTransition(z)}
-  }
-
-  setPanelButtonFunction(strips) {
-    for (let z = 0; z < strips.length; z++)
-      for (let x = 0; x < strips[z].dePanels.length; x++)
-        strips[z].dePanelButtons[x].onclick = function() {strips[z].HTransition(x)}
   }
 
 }

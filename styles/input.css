@@ -1,13 +1,14 @@
 /* STRIP ------------------------------------------- */
 .stripButton {
   border-radius: 1rem;
-  background: linear-gradient(
-    to right top,
-    #65dfc9,
-    #6cdbeb
-  );
+  background-color:#65dfc9;
   padding: 1rem 2rem;
   cursor: pointer;
+  user-select: none;
+}
+
+.stripButton:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0 0);
 }
 
 /* PANEL ------------------------------------------- */
@@ -15,7 +16,6 @@
   position: absolute;
   width: 800px;
   height: 550px;
-  background-color: red;
 }
 
 .panelButtonGroup {
@@ -32,7 +32,12 @@
   cursor: pointer;
   z-index: 10;
   margin-right: 10px;
-  background-color: black;
+  background-color: white;
+  user-select: none;
+}
+
+.panelButton:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0 0);
 }
 
 /* SLIDERS ------------------------------------------ */
@@ -132,11 +137,6 @@
   border-radius: 1rem;
   width: 50px;
   height: 50px;
-  background: linear-gradient(
-    to right top,
-    #65dfc9,
-    #6cdbeb
-  );
   background-size:contain;
   background-repeat: no-repeat;
   padding: 1rem 2rem;

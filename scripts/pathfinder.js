@@ -45,7 +45,8 @@ class Pathfinder {
       self.finished = false
       self.path = []
       self.algo.reset()
-      self.shield.remove()
+      if (self.shield)
+        self.shield.remove()
       self.shield = null
       self.dePlayPauseButton.style.backgroundImage = "url(../icons/play.png)"
     })
