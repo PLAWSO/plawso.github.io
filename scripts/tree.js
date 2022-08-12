@@ -1,12 +1,37 @@
 class Tree {
 
-  constructor(tree, strips) {
+  constructor(tree, strips, navi) {
+    this.deNavi = navi
     this.deTree = tree
     this.strips = strips
+
+    this.stripButtons = this.createStripButtons(this.strips, this.deNavi)
+    this.setStripButtonFunction(this.tree, this.stripButtons)
 
     this.setTreeDefaults()
     this.currentStrip = 0
     this.slideInpro = false
+  }
+
+  createStripButtons(strips, navi) {
+    let stripButton, stripButtons = []
+    for (let z = 0; z < strips.length; z++) {
+      stripButton = document.createElement("div")
+      stripButton.innerHTML = strips[z].deStrip.getAttribute("name")
+      stripButton.className = "stripButton"
+      stripButtons.push(stripButton)
+      navi.insertBefore(stripButton, null)
+    }
+    stripButtons[0].style.backgroundColor = "#479c8c"
+    return stripButtons
+  }
+
+  setStripButtonFunction(tree, stripButtons) {
+    let self = this
+    for (let z = 0; z < this.stripButtons.length; z++) {
+      stripButtons[z].onclick = function() {self.VTransition(z)}
+
+    }
   }
 
   setTreeDefaults() {
@@ -24,6 +49,9 @@ class Tree {
   {
     if (!this.slideInpro && strip != this.currentStrip)
     {
+      this.stripButtons[this.currentStrip].style.backgroundColor = "#65dfc9"
+      this.stripButtons[strip].style.backgroundColor = "#479c8c"
+
       this.slideInpro = true;
 
       let timeForZoom = this.zoomTime - this.ztOverlap;

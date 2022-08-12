@@ -17,10 +17,11 @@ class Strip {
     this.hSpace = def.hSpace
   }
 
-  HTransition(panel) // orchestrates panel transition
-  {
+  HTransition(panel) {
     if (!this.slideInpro && panel != this.currentPanel)
     {
+      this.dePanelButtons[this.currentPanel].style.backgroundColor = "white"
+      this.dePanelButtons[panel].style.backgroundColor = "#a6a6a6"
       this.slideInpro = true;
   
       this.HSlide(panel);
@@ -31,9 +32,8 @@ class Strip {
       }, this.hTime);
     }
   }
-  
-  HSlide(panel)      // slides panel horizontally
-  {
+
+  HSlide(panel) {
     let currentPosition = -this.currentPanel * this.hSpace;
     let targetPosition = -panel * this.hSpace;
     let timeTotal = this.hTime / 10;
