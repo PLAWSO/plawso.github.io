@@ -20,7 +20,8 @@
   flex:3;
   height: 500px;
   width: 500px;
-  background-color: blue;
+  background-color: rgb(100, 100, 100);
+  border-radius: 5px;
   margin: 25px;
   display: grid;
   grid-template-columns: repeat(11, 45px);
@@ -48,14 +49,14 @@
 
 /* for testing */
 .neighbor, .visited {
-  background: orange;
+  background: rgb(217, 118, 43);
   user-select: none;
 }
 
 .closed {
-  background: black;
+  background: rgb(80,80,80);
 }
 
 .path {
-  background: green;
+  background: rgb(48, 184, 33);
 }

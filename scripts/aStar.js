@@ -108,7 +108,7 @@ class AStar {
 
   pathTo(tile) {
     let cur = tile
-    let path = []
+    let path = [this.start]
     while(cur.parent) {
       path.unshift(cur)
       cur = cur.parent

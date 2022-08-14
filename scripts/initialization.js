@@ -16,9 +16,17 @@ class Initialization {
 
     this.tree = new Tree(document.getElementById("stripTree"), this.strips, this.deNavi)
     this.editor = new Editor(this.tree, this)
-    this.pathfinder = new Pathfinder(this.strips[0].dePanels[0], 11, 11)
+    this.pathfinder = new Pathfinder(this.strips[1].dePanels[0], 11, 11)
 
     this.setPanelButtonFunction(this.strips)
+
+
+
+    /*
+    this.bubbles = []
+    for (let z = 0; z < 3; z++)
+      this.bubbles.push(new Bubble())
+    */
   }
 
   sortPanels(rawPanels) {

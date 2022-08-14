@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
 
+  <div id="bubbleContainer"></div>
   <body>
     <main>
       <section class="glass">
@@ -36,11 +37,19 @@
             <div class="panelAligner" id="panelAligner">
               <!-- STRIP 0 -->
 
-              <div class="strip" name="wowsers">
+              <div class="strip" name="Website">
 
-                <div class="panel" id="0"></div>
+                <div class="panel" id="0">
+                  <iframe class="video" src="https://www.youtube.com/embed/qw5zzrOpo2s?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 
                 <div class="panel" id="0">
+                  <div class="video">
+                    <iframe class="gif"src="https://i.gifer.com/VpHw.mp4"></iframe>
+                  </div>
+                </div>
+
+                <div class="panel" id="0"> <!-- EDITOR -->
                   <div class="sliderContainer">
 
                     <div class="sliderGroup">
@@ -104,14 +113,12 @@
                   </div>
                 </div>
 
-                <div class="panel" id="0"><p>0.2</p></div>
-                <div class="panel" id="0"><p>0.3</p></div>
 
               </div>
 
               <!-- STRIP 1 --> 
-              <div class="strip" name="item 1">
-                <div class="panel" id="1"><p>1</p></div>
+              <div class="strip" name="Pathfinding">
+                <div class="panel" id="1"></div>
                 <div class="panel" id="1" name="demo">
                   <div id="tileContainer">
                     <div class="runButton" id="runButton"></div>
@@ -123,29 +130,33 @@
               </div>
 
               <!-- STRIP 2 -->
-              <div class="strip" name="item 2">
+              <div class="strip" name="About Me">
                 <div class="panel" id="2"><p>2</p></div>
               </div>
 
               <!-- STRIP 3 -->
-              <div class="strip" name="item 3">
-                <div class="panel" id="3"><p>3</p></div>
-                <div class="panel" id="3"><p>3.1</p></div>
+              <div class="strip" name="Contact">
+                <div class="panel" id="3">
+                  <form class="emailForm" action="https://formsubmit.co/lawson.payton@outlook.com" method="POST">
+                    <div class="emailForm">
+
+                      <input class="lineInput" type="text" placeholder="name" required>
+                      <input class="lineInput" type="email" placeholder="your email" required>
+                      <textarea class="bodyInput" placeholder="message" required></textarea>
+                      <button class="sendButton" type="submit">Send</button>
+                    </div>
+                  </form>
+                </div>
               </div>
 
-              <div class="strip" name="item 4">
-                <div class="panel" id="4"><p>4</p></div>
-              </div>
+
 
             </div>
           </div>
         </div>
       </section>
     </main>
-    <div class="circle1"></div>
-    <div class="circle2"></div>
   </body>
-
 
   <script src="./scripts/initialization.js"></script>
   <script src="./scripts/editor.js"></script>
@@ -156,4 +167,7 @@
   <script src="./scripts/aStar.js"></script>
   <script src="./scripts/tile.js"></script>
   <script src="./scripts/pathfinder.js"></script>
+  <script src="./scripts/bubble.js"></script>
+  <script src="./scripts/dijkstra.js"></script>
+
 </html>
