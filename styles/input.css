@@ -5,6 +5,7 @@
   padding: 1rem 2rem;
   cursor: pointer;
   user-select: none;
+  color:white;
 }
 
 .stripButton:hover {
@@ -16,13 +17,15 @@
   position: absolute;
   width: 800px;
   height: 550px;
+  user-select: none;
 }
 
 .panelButtonGroup {
   position: absolute;
   display: flex;
   top: 560px;
-  left: 30px
+  left: 30px;
+  user-select: none;
 }
 
 .panelButton {
@@ -108,15 +111,6 @@
   margin: 10px;
 }
 
-.resetButton {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  background: blue;
-  right: 100px;
-  cursor: pointer;
-}
 
 .display {
   position: absolute;
@@ -133,7 +127,7 @@
   opacity: 0.5;
 }
 
-.algoButton {
+.algoButton, .resetButton, button {
   border-radius: 1rem;
   width: 50px;
   height: 50px;
@@ -143,6 +137,11 @@
   cursor: pointer;
 }
 
+.resetButton {
+  position: absolute;
+  right: 100px;
+  background-image: url(../icons/reset.png);
+}
 .shield {
   height: 500px;
   width: 500px;
@@ -151,4 +150,62 @@
   position: absolute;
   position: absolute;
   cursor:not-allowed;
+}
+
+.emailForm {
+  flex-direction: column;
+  position: absolute;
+  margin: 30px;
+  margin-top: 15px;
+}
+
+.lineInput, .bodyInput, .sendButton {
+  margin: 10px;
+  outline: none;
+}
+
+.lineInput,.bodyInput {
+  border: 0px;
+  border-bottom: 2px;
+  border-color: white;
+  border-style: solid;
+  background-color: transparent;
+  width: 300px;
+  height: 50px;
+  padding: 20px;
+  color:white;
+}
+
+.lineInput {
+  
+}
+
+.bodyInput {
+  height: 250px;
+  vertical-align:text-bottom;
+  resize: none;
+}
+
+.sendButton {
+  border: 0px;
+  padding: 1rem 2rem;
+  width: 100px;
+  background-color: white;
+}
+
+.sendButton:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0 0);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(256, 256, 256, 1);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgba(220, 220, 220, 1);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgba(220, 220, 220, 1);
 }

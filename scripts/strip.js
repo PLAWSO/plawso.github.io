@@ -15,6 +15,7 @@ class Strip {
     this.hTime = def.hTime
     this.haTime = def.haTime
     this.hSpace = def.hSpace
+    this.deStrip.style.left = `${-this.currentPanel * def.hSpace}px`
   }
 
   HTransition(panel) {

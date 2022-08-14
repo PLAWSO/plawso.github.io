@@ -1,4 +1,8 @@
-.circle1, .circle2 {
+#bubbleContainer {
+  overflow: hidden;
+}
+
+.bubble {
   background: white;
   background: linear-gradient(
     to right bottom,
@@ -6,17 +10,8 @@
     rgba(255, 255, 255, 0.3)
   );
   border-radius: 50%;
-  height: 200px;
-  width: 200px;
+  height: 500px;
+  width: 500px;
   position: absolute;
-}
-
-.circle1 {
-  top: 5%;
-  right: 15%;
-}
-
-.circle2 {
-  bottom: 5%;
-  left: 10%;
+  overflow: hidden;
 }

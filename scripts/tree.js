@@ -43,6 +43,7 @@ class Tree {
     this.ztOverlap = def.ztOverlap
     this.zoom = def.zoom
     this.zoomOffset = def.zoomOffset
+    this.deTree.style.top = `${-this.currentStrip * def.vSpace}px`
   }
 
   VTransition(strip) // orchestrates strip transition
