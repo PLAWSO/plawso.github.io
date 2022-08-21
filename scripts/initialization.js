@@ -50,10 +50,10 @@ class Initialization {
     let panderShield = document.createElement("div")
     panderShield.id = "panderShield"
     panderShield.style.height = "100px"
-    panderShield.style.width = "200px"
+    panderShield.style.width = "250px"
     panderShield.style.position = "absolute"
     panderShield.style.top = "660px"
-    panderShield.style.left = "190px"
+    panderShield.style.left = "385px"
     panderShield.style.userSelect = "none"
     document.getElementsByClassName('body')[0].insertBefore(panderShield, null)
     panderShield.style.zIndex = "10"

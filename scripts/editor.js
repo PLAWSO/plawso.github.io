@@ -76,13 +76,10 @@ class Editor {
         tree.strips[z].hSpace = Math.round(this.value / 10) * 10
 
       self.hSpaceDisplay.innerHTML = tree.strips[0].hSpace
-    
       for (let z = 0; z < tree.strips.length; z++) {
         for (let x = 0; x < tree.strips[z].dePanels.length; x++) {
           tree.strips[z].dePanels[x].style.left = `${x * tree.strips[z].hSpace}px`
-          if (tree.currentStrip == z && tree.strips[z].currentPanel == x) {
-            tree.strips[z].deStrip.style.left = `${-x * tree.strips[z].hSpace}px`
-          }
+          tree.strips[z].deStrip.style.left = `${-tree.strips[z].currentPanel * tree.strips[z].hSpace}px`
         }
       }
 

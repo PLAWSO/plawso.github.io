@@ -3,7 +3,7 @@ class Bubble {
     this.deBubble = deBubble
     this.resetBubble(deBubble)
     this.speed = Math.random() / 2 + 0.5
-    self = this
+    let self = this
     let speed = this.speed
     this.interval = setInterval(function() {self.moveBubble(deBubble, self, speed)}, 10)
   }

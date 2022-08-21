@@ -12,8 +12,8 @@
     rgba(255, 255, 255, 0.3)
   );
   border-radius: 50%;
-  height: 500px;
-  width: 500px;
+  height: 200px;
+  width: 200px;
   position: absolute;
   overflow: hidden;
 }

@@ -34,9 +34,15 @@ function onPlayerReady(event) {
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
 var done = false;
+var skipped = false
 var intro
 function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
+  if (event.data == YT.PlayerState.PLAYING && !done && !skipped) {
     intro = new Intro()
   }
 }
+
+
+
+
+

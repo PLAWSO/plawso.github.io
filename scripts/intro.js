@@ -9,14 +9,45 @@ class Intro {
 
     this.introSequence()
     this.tree = init.tree
+
+
+    this.pointer = document.createElement('div')
+    this.pointer.classList.add("cursor")
+    body.insertBefore(this.pointer, null)
+    console.log(this.pointer)
+    let numPoints = 100
+    let points = this.generateLinePoints(numPoints, 200, 200, 800, 800)
+    let currentPoint = 0
+    let cycles = 0
+    let self = this
+    console.log(points)
+    let interval = setInterval(function() {
+      currentPoint++
+      if (numPoints < currentPoint) {
+        currentPoint = 0
+        cycles++
+      }
+      self.pointer.style.left = `${points[currentPoint][0]}px`
+      self.pointer.style.top = `${points[currentPoint][1]}px`
+    }, 10)
   }
 
   skipIntro() {
     this.skip = true
+    skipped = true
     let pander = this.tree.stripButtons[this.tree.stripButtons.length - 1]
     pander.style.opacity = "1"
-    document.getElementById("panderShield").remove()
-    this.shield.remove()
+    
+    if (this.shield)
+      this.shield.remove()
+
+    let panderShield = document.getElementById("panderShield")
+    if (panderShield)
+      panderShield.remove()
+    
+    let skipButton = document.getElementsByClassName("skipButton")[0]
+    if (skipButton)
+      skipButton.remove()
   }
 
   introSequence() {
@@ -208,7 +239,35 @@ class Intro {
     setTimeout(() => {
       if (!this.skip) {
         this.shield.remove()
+        document.getElementsByClassName("skipButton")[0].remove()
       }
     }, 100000)
+  }
+
+  generateCirclePoints(radius, numPoints, xOffset, yOffset) {
+    let sep = (2 * Math.PI) / numPoints
+    let points = []
+    let cur = sep
+    for (let z = 0; z < numPoints; z++) {
+      let x = (Math.cos(cur) * radius) + xOffset
+      let y = (Math.sin(cur) * radius) + yOffset
+      points.push([x, y])
+      cur += sep
+    }
+    return points
+  }
+
+  generateLinePoints(numPoints, startX, startY, endX, endY) {
+    let xSep = (endX - startX) / numPoints
+    let ySep = (endY - startY) / numPoints    
+    let points = []
+    let xCur = startX
+    let yCur = startY
+    for (let z = 0; z < numPoints; z++) {
+      xCur += xSep
+      yCur += ySep
+      points.push([xCur, yCur])
+    }
+    return points
   }
 }

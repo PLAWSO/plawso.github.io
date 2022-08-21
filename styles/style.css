@@ -149,3 +149,14 @@ iframe {
   object-fit: cover;
   border-radius: 20px;
 }
+
+.cursor {
+  background-image: url(../icons/cursor.png);
+  background-size: contain;
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 100;
+
+}
