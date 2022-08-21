@@ -120,7 +120,6 @@ class Tree {
 
     let zoomVelocity = this.zoomOffset / time;
     let zoomFinal = this.zoom;
-
     if (scale == this.zoom)
     {
       zoomVelocity *= -1;

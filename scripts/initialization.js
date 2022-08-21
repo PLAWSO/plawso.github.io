@@ -1,3 +1,4 @@
+var init
 onload = function() {
   init = new Initialization()
 }
@@ -20,13 +21,43 @@ class Initialization {
 
     this.setPanelButtonFunction(this.strips)
 
+    let bubbleContainer = document.getElementById("bubbleContainer")
+    let bubbles = []
+    for (let z = 0; z < 5; z++) {
+      let deBubble = document.createElement("div")
+      deBubble.className = "bubble"
+      bubbleContainer.insertBefore(deBubble, null)
+      let bubble = new Bubble(deBubble)
+      bubbles.push(bubble)
+    }
 
 
-    /*
-    this.bubbles = []
-    for (let z = 0; z < 3; z++)
-      this.bubbles.push(new Bubble())
-    */
+    let skipButton = document.createElement("div")
+    skipButton.classList.add("stripButton", "skipButton")
+    skipButton.innerHTML = "skip"
+    skipButton.style.position = "absolute"
+    skipButton.style.left = "93%"
+    skipButton.style.top = "90%"
+    skipButton.style.zIndex = "11"
+    document.getElementsByClassName('body')[0].insertBefore(skipButton, null)
+    console.log(skipButton)
+
+    skipButton.onclick = function () {
+      intro.skipIntro()
+    }
+
+    let obviousPander = this.tree.stripButtons[this.tree.stripButtons.length - 1]
+    obviousPander.style.opacity = "0"
+    let panderShield = document.createElement("div")
+    panderShield.id = "panderShield"
+    panderShield.style.height = "100px"
+    panderShield.style.width = "200px"
+    panderShield.style.position = "absolute"
+    panderShield.style.top = "660px"
+    panderShield.style.left = "190px"
+    panderShield.style.userSelect = "none"
+    document.getElementsByClassName('body')[0].insertBefore(panderShield, null)
+    panderShield.style.zIndex = "10"
   }
 
   sortPanels(rawPanels) {
@@ -109,5 +140,4 @@ class Initialization {
       }
     }
   }
-
 }
