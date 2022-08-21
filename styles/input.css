@@ -146,6 +146,7 @@
   right: 100px;
   background-image: url(../icons/reset.png);
 }
+
 .shield {
   height: 500px;
   width: 500px;
@@ -153,6 +154,16 @@
   left: 275px; /*WILL NEED TO BE CHANGED!*/
   position: absolute;
   position: absolute;
+  cursor:not-allowed;
+}
+
+.fsShield {
+  position:absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
   cursor:not-allowed;
 }
 
@@ -178,10 +189,6 @@
   height: 50px;
   padding: 20px;
   color:white;
-}
-
-.lineInput {
-  
 }
 
 .bodyInput {

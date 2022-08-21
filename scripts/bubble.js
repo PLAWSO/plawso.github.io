@@ -1,17 +1,25 @@
 class Bubble {
-  constructor() {
-    this.deBubble = document.createElement("div")
-    this.deBubble.className = "bubble"
-    document.getElementById("bubbleContainer").insertBefore(this.deBubble, null)
+  constructor(deBubble) {
+    this.deBubble = deBubble
+    this.resetBubble(deBubble)
+    this.speed = Math.random() / 2 + 0.5
     self = this
-    this.interval = setInterval(function() {
-      if (+self.deBubble.style.top.replace("px", "") < -700) {
-        self.deBubble.style.top = "1000px"
-        self.deBubble.style.left = `${Math.random() * 100}%`
-      }
+    let speed = this.speed
+    this.interval = setInterval(function() {self.moveBubble(deBubble, self, speed)}, 10)
+  }
+  
+  moveBubble(deBubble, self, speed) {
+    if (+deBubble.style.top.replace("px", "") < -700)
+      self.resetBubble(deBubble)
+    deBubble.style.top = `${+deBubble.style.top.replace("px", "") - speed}px`
+  }
 
-      self.deBubble.style.top = `${+self.deBubble.style.top.replace("px", "") - 1}px`
-    }, 50)
+  resetBubble(deBubble) {
+    deBubble.style.left = `${(Math.random() * 120) - 10}%`
+    let size = (Math.random() * 400) + 100
 
+    deBubble.style.height = `${size}px`
+    deBubble.style.width = `${size}px`
+    deBubble.style.top = `${(Math.random() * 300) + 1000}px`
   }
 }
