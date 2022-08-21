@@ -11,10 +11,10 @@ class Intro {
     this.tree = init.tree
 
 
-    this.pointer = document.createElement('div')
-    this.pointer.classList.add("cursor")
-    body.insertBefore(this.pointer, null)
-    console.log(this.pointer)
+    var pointer = document.createElement('div')
+    pointer.classList.add("cursor")
+    body.insertBefore(pointer, null)
+    console.log(pointer)
     let numPoints = 100
     let points = this.generateLinePoints(numPoints, 200, 200, 800, 800)
     let currentPoint = 0
@@ -23,12 +23,12 @@ class Intro {
     console.log(points)
     let interval = setInterval(function() {
       currentPoint++
-      if (numPoints < currentPoint) {
+      if (currentPoint >= numPoints) {
         currentPoint = 0
         cycles++
       }
-      self.pointer.style.left = `${points[currentPoint][0]}px`
-      self.pointer.style.top = `${points[currentPoint][1]}px`
+      pointer.style.left = `${points[currentPoint][0]}px`
+      pointer.style.top = `${points[currentPoint][1]}px`
     }, 10)
   }
 
