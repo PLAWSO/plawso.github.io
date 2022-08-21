@@ -40,7 +40,6 @@ class Initialization {
     skipButton.style.top = "90%"
     skipButton.style.zIndex = "11"
     document.getElementsByClassName('body')[0].insertBefore(skipButton, null)
-    console.log(skipButton)
 
     skipButton.onclick = function () {
       intro.skipIntro()
