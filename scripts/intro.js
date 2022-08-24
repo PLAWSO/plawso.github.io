@@ -1,36 +1,30 @@
 class Intro {
   constructor() {
-    let body = document.getElementsByClassName('body')[0]
+    this.body = document.getElementsByClassName('body')[0]
     this.shield = document.createElement('div')
     this.shield.classList.add('fsShield')
-    body.insertBefore(this.shield, null)
+    this.body.insertBefore(this.shield, null)
 
     this.skip = false
 
     this.introSequence()
     this.tree = init.tree
+  }
 
-
-    var pointer = document.createElement('div')
-    pointer.classList.add("cursor")
-    body.insertBefore(pointer, null)
-    console.log(pointer)
-    let numPoints = 100
-    let points = this.generateLinePoints(numPoints, 200, 200, 800, 800)
+  movePointer(pointer, points, reps) {
     let currentPoint = 0
-    let cycles = 0
-    let self = this
-    console.log(points)
     let interval = setInterval(function() {
-      currentPoint++
-      if (currentPoint >= numPoints) {
-        currentPoint = 0
-        cycles++
-      }
       pointer.style.left = `${points[currentPoint][0]}px`
       pointer.style.top = `${points[currentPoint][1]}px`
+      currentPoint++
+      if (currentPoint == points.length)
+        currentPoint = 0
     }, 10)
+    setTimeout(() => {
+      clearInterval(interval)
+    }, 10 * points.length * reps)
   }
+
 
   skipIntro() {
     this.skip = true
@@ -221,13 +215,126 @@ class Intro {
       }
     }, 66000)    
     
+    let ptrTimeOffset = 67000
+    let pointer, numPoints, points
+    // create pointer
     setTimeout(() => {
-
-    }, 47500)    
+      pointer = document.createElement('div')
+      pointer.classList.add("cursor")
+      this.body.insertBefore(pointer, null)
+    }, 0 + ptrTimeOffset)
     
+    // draw circles
     setTimeout(() => {
+      numPoints = 40
+      points = this.generateCirclePoints(numPoints, 100, 200, 200)
+      this.movePointer(pointer, points, 3)
+    }, 0 + ptrTimeOffset)
+    
+    // move to grid
+    setTimeout(() => {
+      numPoints = 80
+      points = this.generateLinePoints(numPoints, 300, 200, 1050, 450)
+      this.movePointer(pointer, points, 1)
+    }, 1700 + ptrTimeOffset)
 
-    }, 47500)
+    let tiles = init.pathfinder.grid.deTiles
+    // move to draw horizontal
+    setTimeout(() => {
+      numPoints = 160
+      points = this.generateLinePoints(numPoints, 1050, 450, 1410, 450)
+      this.movePointer(pointer, points, 1)
+    }, 3000 + ptrTimeOffset)
+    // draw horizontal
+    setTimeout(() => {
+      let y = 5
+      let x = 1
+      let interval = setInterval(function() {
+        tiles[y][x].classList.add("wall")
+        x++
+      }, 175)
+      setTimeout(() => {clearInterval(interval)}, 1575)
+    }, 3000 + ptrTimeOffset)
+
+    // move to draw vertical
+    setTimeout(() => {
+      numPoints = 130
+      points = this.generateLinePoints(numPoints, 1410, 450, 1410, 220)
+      this.movePointer(pointer, points, 1)
+    }, 4600 + ptrTimeOffset)
+    // draw vertical
+    setTimeout(() => {
+      let y = 4
+      let x = 9
+      let interval = setInterval(function() {
+        tiles[y][x].classList.add("wall")
+        y--
+      }, 175)
+      setTimeout(() => {clearInterval(interval)}, 875)
+    }, 4900 + ptrTimeOffset)
+
+    // move to erase vertical
+    setTimeout(() => {
+      numPoints = 70
+      points = this.generateLinePoints(numPoints, 1410, 220, 1410, 300)
+      this.movePointer(pointer, points, 1)
+    }, 6300 + ptrTimeOffset)
+    setTimeout(() => {
+      let y = 0
+      let x = 9
+      let interval = setInterval(function() {
+        tiles[y][x].classList.remove("wall")
+        y++
+      }, 175)
+      setTimeout(() => {clearInterval(interval)}, 525)
+    }, 6300 + ptrTimeOffset)
+
+    // move to snake
+    setTimeout(() => {
+      numPoints = 30
+      points = this.generateLinePoints(numPoints, 1410, 300, 1280, 480)
+      this.movePointer(pointer, points, 1)
+    }, 7500 + ptrTimeOffset)
+    setTimeout(() => {
+      tiles.forEach(tileRow => {
+        tileRow.forEach(tile => {
+          if (tile.firstChild)
+          if (tile.firstChild.classList.contains("snake"))
+          tile.firstChild.remove()
+        })
+      })
+    }, 8200 + ptrTimeOffset)    
+    
+    // move to relocate snake
+    setTimeout(() => {
+      numPoints = 40
+      points = this.generateLinePoints(numPoints, 1280, 480, 1460, 660)
+      this.movePointer(pointer, points, 1)
+    }, 8200 + ptrTimeOffset)
+    setTimeout(() => {
+      init.pathfinder.grid.createEntity("./icons/snek.png", "snake", tiles[10][10])
+    }, 8800 + ptrTimeOffset)
+
+    // move to start button
+    setTimeout(() => {
+      numPoints = 40
+      points = this.generateLinePoints(numPoints, 1460, 660, 825, 300)
+      this.movePointer(pointer, points, 1)
+    }, 9000 + ptrTimeOffset)
+    // press play
+    setTimeout(() => {
+      init.pathfinder.togglePlay(init.pathfinder)
+    }, 9700 + ptrTimeOffset)
+
+    // delete pointer
+    setTimeout(() => {
+      pointer.remove()
+    }, 11000 + ptrTimeOffset)
+    
+    // reset grid
+    setTimeout(() => {
+      init.pathfinder.pathReset(init.pathfinder)
+    }, 23000 + ptrTimeOffset)
 
     // switch back to video
     setTimeout(() => {
@@ -235,7 +342,7 @@ class Intro {
         this.tree.VTransition(0)
       }
     }, 87000)    
- 
+    
     setTimeout(() => {
       if (!this.skip) {
         this.shield.remove()
@@ -244,7 +351,7 @@ class Intro {
     }, 100000)
   }
 
-  generateCirclePoints(radius, numPoints, xOffset, yOffset) {
+  generateCirclePoints(numPoints, radius, xOffset, yOffset) {
     let sep = (2 * Math.PI) / numPoints
     let points = []
     let cur = sep

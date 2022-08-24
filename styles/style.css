@@ -153,10 +153,10 @@ iframe {
 .cursor {
   background-image: url(../icons/cursor.png);
   background-size: contain;
-  height: 22px;
-  width: 22px;
+  width: 21px;
+  height: 21px;
   position: absolute;
   background-repeat: no-repeat;
   z-index: 100;
-
+  user-select: none;
 }

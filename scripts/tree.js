@@ -35,7 +35,7 @@ class Tree {
   }
 
   setTreeDefaults() {
-    let def = new DefValues()
+    let def = new DefValues() 
     this.zoomTime = def.zoomTime
     this.vTime = def.vTime
     this.vaTime = def.vaTime

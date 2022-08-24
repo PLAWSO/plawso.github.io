@@ -11,57 +11,61 @@ class Pathfinder {
     let self = this
     this.deOptions = this.createDiv("options", "", "", this.panel, this.grid.deTileContainer)
     
-    this.dePlayPauseButton = this.createDiv("algoButton", "", "../icons/play.png", this.deOptions, null, function() {
-      if (!self.shield)
-        self.shield = self.createDiv("shield", "", "", self.panel, null)
-      if (self.interval && !self.finished) {
-        clearInterval(self.interval)
-        self.interval = null
-        this.style.backgroundImage = "url(../icons/play.png)"
-      }
-      else if (!self.finished) {
-        this.style.backgroundImage = "url(../icons/pause.png)"
-        self.interval = setInterval(function() {
-          self.path = self.algo.algoStep()
-          if (self.path.length > 0)
-            self.drawPath(self.path)
-        }, 100)
-      }
-    })
+    this.dePlayPauseButton = this.createDiv("algoButton", "", "../icons/play.png", this.deOptions, null)
+    this.dePlayPauseButton.addEventListener('click', function(){self.togglePlay(self)})
 
     this.deStepButton = this.createDiv("algoButton", "", "../icons/step.png",this.deOptions, null, function() {
       if (!self.shield)
-        self.shield = self.createDiv("shield", "", "", self.panel, null)
+      self.shield = self.createDiv("shield", "", "", self.panel, null)
       if (!self.play && !self.finished)
-        self.path = self.algo.algoStep()
+      self.path = self.algo.algoStep()
       if (self.path.length > 0)
-        self.drawPath(self.path)
+      self.drawPath(self.path)
     })
-
-    this.deResetButton = this.createDiv("algoButton", "", "../icons/reset.png", this.deOptions, null, function() {
-      if (self.interval)
-        clearInterval(self.interval)
-      self.interval = null
-      self.finished = false
-      self.path = []
-      self.algo.reset()
-      if (self.shield)
-        self.shield.remove()
-      self.shield = null
-      self.dePlayPauseButton.style.backgroundImage = "url(../icons/play.png)"
-    })
-
+    
+    this.deResetButton = this.createDiv("algoButton", "", "../icons/reset.png", this.deOptions, null)
+    this.deResetButton.addEventListener('click', function(){self.pathReset(self)})
   }
-
+  
+  togglePlay(self) {
+    if (!self.shield)
+      self.shield = self.createDiv("shield", "", "", self.panel, null)
+    if (self.interval && !self.finished) {
+      clearInterval(self.interval)
+      self.interval = null
+      self.dePlayPauseButton.style.backgroundImage = "url(../icons/play.png)"
+    }
+    else if (!self.finished) {
+      self.dePlayPauseButton.style.backgroundImage = "url(../icons/pause.png)"
+      self.interval = setInterval(function() {
+        self.path = self.algo.algoStep()
+        if (self.path.length > 0)
+          self.drawPath(self.path)
+      }, 100)
+    }
+  }
+  
+  pathReset(self) {
+    if (self.interval)
+      clearInterval(self.interval)
+    self.interval = null
+    self.finished = false
+    self.path = []
+    self.algo.reset()
+    if (self.shield)
+      self.shield.remove()
+    self.shield = null
+    self.dePlayPauseButton.style.backgroundImage = "url(../icons/play.png)"
+  }
+  
   createDiv(className, text, iconPath, parent, insertBefore, func) {
     let button = document.createElement("div")
     button.className = className
     button.innerHTML = text
-    if (iconPath != "") {
+    if (iconPath != "")
       button.style.backgroundImage = `url(${iconPath})`
-    }
     if (func)
-      button.addEventListener("click", func)
+      button.addEventListener('click', func)
     parent.insertBefore(button, insertBefore)
     return button
   }
