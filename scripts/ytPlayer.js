@@ -10,7 +10,7 @@ firstScriptTag.classList.add('media')
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
-    videoId: 'Rq0wZhk-wQg',
+    videoId: 'TMd3eNbDS78',
     playerVars: {
       'playsinline': 1,
       'controls': 0,
@@ -32,15 +32,14 @@ function onPlayerReady(event) {
 
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
 var done = false;
 var skipped = false
-var intro
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING && !done && !skipped) {
-    intro = new Intro()
+    let intro = new Intro()
   }
 }
+
 
 
 

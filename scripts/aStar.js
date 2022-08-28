@@ -92,7 +92,6 @@ class AStar {
         this.heap.forEach(tile => {
           buf.push(tile.deTile)
         })
-
       }
     })
   
@@ -122,46 +121,38 @@ class AStar {
     var y = tile.y;
     let tiles = this.tiles;
 
-    // Left
+    // left
     if (tiles[x - 1] && tiles[x - 1][y] && !tiles[x - 1][y].deTile.classList.contains("wall")) {
       buf.push(tiles[x - 1][y])
     }
-  
-    // Right
+    // right
     if (tiles[x + 1] && tiles[x + 1][y] && !tiles[x + 1][y].deTile.classList.contains("wall")) {
       buf.push(tiles[x + 1][y])
     }
-  
-    // Bottom
+    // bottom
     if (tiles[x] && tiles[x][y + 1] && !tiles[x][y + 1].deTile.classList.contains("wall")) {
       buf.push(tiles[x][y + 1])
     }
-  
-    // Top
+    // top
     if (tiles[x] && tiles[x][y - 1] && !tiles[x][y - 1].deTile.classList.contains("wall")) {
       buf.push(tiles[x][y - 1])
     }
-  
-    // Bottom left
+    // bottom left
     if (tiles[x - 1] && tiles[x - 1][y + 1] && !tiles[x - 1][y + 1].deTile.classList.contains("wall")) {
       buf.push(tiles[x - 1][y + 1])
     }
-
-    // Bottom right
+    // bottom right
     if (tiles[x + 1] && tiles[x + 1][y + 1] && !tiles[x + 1][y + 1].deTile.classList.contains("wall")) {
       buf.push(tiles[x + 1][y + 1])
     }
-
-    // Top left
+    // top left
     if (tiles[x - 1] && tiles[x - 1][y - 1] && !tiles[x - 1][y - 1].deTile.classList.contains("wall")) {
       buf.push(tiles[x - 1][y - 1])
     }
-
-    // Top right
+    // top right
     if (tiles[x + 1] && tiles[x + 1][y - 1] && !tiles[x + 1][y - 1].deTile.classList.contains("wall")) {
       buf.push(tiles[x + 1][y - 1])
     }
-
     return buf
   }
 }

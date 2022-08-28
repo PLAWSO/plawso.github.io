@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
-
+  <div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+  </div>
   <body class="body">
     <div id="bubbleContainer"></div>
     <main>
@@ -129,7 +131,20 @@
 
               <!-- STRIP 2 -->
               <div class="strip" name="About Me">
-                <div class="panel" id="2"><p>2</p></div>
+                <div class="panel" id="2">
+                  <img class="collage" src="./photos/food.png"></img>
+                  <p>this is an explanation of what im talking about</p>
+                </div>
+                <div class="panel" id="2">
+                  <img class="collage" src="./photos/car.png"></img>
+                  <p>
+                    I enjoy building and fixing cars! My two babies are a 1999 Jeep Cherokee which I refuse to let die, and a 1976 Datsun 280z which desperately needs some more TLC.
+                  </p>
+                </div>
+                <div class="panel" id="2">
+                  <img class="collage" src="./photos/pc.png"></img>
+                  
+                </div>
               </div>
 
               
@@ -150,7 +165,7 @@
               </div>
 
               <!-- STRIP 4 -->
-              <div class="strip" name="Obvious Pander">
+              <div class="strip" name="Cat Pics">
                 <div class="panel" id="4">
                   <img class="media" src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"></img>
                 </div>
@@ -188,4 +203,20 @@
   <script src="./scripts/bubble.js"></script>
   <script src="./scripts/dijkstra.js"></script>
 
+  <script>
+    window.addEventListener("load",function(){
+      let loaderWrapper = document.getElementsByClassName("loader-wrapper")[0]
+      var op = 1;  // initial opacity
+      var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            loaderWrapper.style.display = 'none';
+        }
+        loaderWrapper.style.opacity = op;
+        loaderWrapper.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+      }, 10);
+    })
+  </script>
+  
 </html>
