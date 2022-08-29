@@ -132,6 +132,19 @@ main {
   font-size:medium;
 }
 
+
+.info {
+  flex-direction: column;
+  position: absolute;
+  margin-top: 40px;
+  left: 60%;
+}
+
+.info h1{
+  margin-top: 15px;
+  color: white;
+}
+
 iframe {
   position: relative;
   width: 100%;
