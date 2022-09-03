@@ -42,15 +42,15 @@ class Editor {
     this.zoomTimeDisplay.innerHTML = def.zoomTime
     this.zoomOffsetDisplay.innerHTML = def.zoomOffset
 
-    this.vSpaceDisplay.value = def.vSpace
-    this.hSpaceDisplay.innerHTML = def.hSpace
-    this.vTimeDisplay.innerHTML = def.vTime
-    this.vaTimeDisplay.innerHTML = def.vaTime
-    this.hTimeDisplay.innerHTML = def.hTime
-    this.haTimeDisplay.innerHTML = def.haTime
-    this.zoomDisplay.innerHTML = def.zoom
-    this.zoomTimeDisplay.innerHTML = def.zoomTime
-    this.zoomOffsetDisplay.innerHTML = def.zoomOffset
+    this.vSpaceSlider.value = def.vSpace
+    this.hSpaceSlider.value = def.hSpace
+    this.vTimeSlider.value = def.vTime
+    this.vaTimeSlider.value = def.vaTime
+    this.hTimeSlider.value = def.hTime
+    this.haTimeSlider.value = def.haTime
+    this.zoomSlider.value = def.zoom * 100
+    this.zoomTimeSlider.value = def.zoomTime
+    this.zoomOffsetSlider.value = def.zoomOffset * 100
 
 
     this.vaTimeSlider.max = def.vaTimeSliderMax
